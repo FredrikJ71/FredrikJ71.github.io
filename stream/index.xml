@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Strömchiffer on FredrikJ</title>
+    <link>/stream/</link>
+    <description>Recent content in Strömchiffer on FredrikJ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/stream/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
