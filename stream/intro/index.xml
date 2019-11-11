@@ -12,21 +12,21 @@
     
     
     <item>
-      <title>Example Page 1</title>
-      <link>/stream/intro/example1/</link>
-      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <title>One Time Pad OTP</title>
+      <link>/stream/intro/otp/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0100</pubDate>
       
-      <guid>/stream/intro/example1/</guid>
-      <description>In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:
-Tip 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim.</description>
+      <guid>/stream/intro/otp/</guid>
+      <description>One Time Pad (OTP) är ett kryptosystem som är över 100 år och bevisat säker. Problemet är dock att OTP är svårt att implementera. Anledningen till detta problem kommer att bli uppenbart när man sett dess villkor. OTP är viktigt eftersom strömchiffer kan ses som ett försök att skapa ett OTP-liknande system som är praktiskt, även om strömchiffer inte ger perfekt sekretess.
+Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kryptera telegraferad information 1.</description>
     </item>
     
     <item>
       <title>Example Page 2</title>
-      <link>/stream/intro/example2/</link>
+      <link>/stream/intro/security/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
       
-      <guid>/stream/intro/example2/</guid>
+      <guid>/stream/intro/security/</guid>
       <description>Here are some more tips for getting started with Academic:
 Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus.</description>
     </item>

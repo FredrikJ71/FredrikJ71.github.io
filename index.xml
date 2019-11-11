@@ -6,53 +6,72 @@
     <description>Recent content on FredrikJ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 May 2019 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0100</lastBuildDate>
     
 	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Example Page 1</title>
-      <link>/stream/intro/example1/</link>
-      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <title>One Time Pad OTP</title>
+      <link>/stream/intro/otp/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0100</pubDate>
       
-      <guid>/stream/intro/example1/</guid>
+      <guid>/stream/intro/otp/</guid>
       <description>
 
-&lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
+&lt;p&gt;One Time Pad (OTP) är ett kryptosystem som är över 100 år och bevisat säker. Problemet är dock att OTP är svårt att implementera. Anledningen till detta problem kommer att bli uppenbart när man sett dess villkor. OTP är viktigt eftersom strömchiffer kan ses som ett försök att skapa ett OTP-liknande system som är praktiskt, även om strömchiffer inte ger perfekt sekretess.&lt;/p&gt;
 
-&lt;h2 id=&#34;tip-1&#34;&gt;Tip 1&lt;/h2&gt;
+&lt;h2 id=&#34;historik&#34;&gt;Historik&lt;/h2&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
+&lt;p&gt;År 1919 tog G. S. Vernam patent på ett system för att automatiskt kryptera telegraferad information &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Principen byggde på att de meddelanden som skickades via en telegraf i början av 1900-talet var kodade i en remsa med utstandade hål. Varje tecken som skickades motsvarades av en rad på remsan. I varje rad fanns det fem positioner där det antingen fanns ett hål utstansat eller inget hål. Denna typ av kodning kallas även Baudot-kodning och kan ses som en 5-bitars digital kod.&lt;/p&gt;
 
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
+&lt;p&gt;Det Vernam gjorde i sin maskin var att kombinera hålremsan för meddelandet med en annan hålremsa som innehöll krypteringsnyckeln. Krypteringsnyckeln skulle innehålla slumpvis genererade tecken, kodade med samma Baudot-kodning som meddelandet. Tanken är att nyckelremsan finns i två identiska exemplar där sändaren har den ana och mottagaren den andra.&lt;/p&gt;
 
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
+&lt;p&gt;Maskinen läser sedan av både meddelande- och nyckelremsorna position för position. Om den ena remsan har ett hål i en viss position men inte den andra remsan görs ett hål i en trdje remsa som motsvarar den krypterade texten. Om de båda remsorna har hål eller om ingen av dem har ett hål blir det inget hål i den krypterade remsan. Denna operation motsvarar XOR-operationen med logiska kretsar.&lt;/p&gt;
 
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
+&lt;p&gt;Mottagaren som har samma nyckelremsa som sändaren kan dekryptera meddelandet med samma maskin. I detta fall används den mottagna krypterade remsan och kombinerad med nycklremsan. Genom att använda samma avkodningslogik som för kryptering kan originalmeddelandet återskapas.&lt;/p&gt;
 
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+&lt;h2 id=&#34;säkerhet&#34;&gt;Säkerhet&lt;/h2&gt;
 
-&lt;h2 id=&#34;tip-2&#34;&gt;Tip 2&lt;/h2&gt;
+&lt;p&gt;I en senare publikation av Vernam &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; jämförs olika typer krypteringsmaskiner. I artikeln påpekas det att man inte får kryptera mer data med maskinen än längden på nyckelremsan, därav namnet One Time Pad. Det ska dock noteras att Vernam hade ett förslag på hur nyckelremsan kunde återvinnas genom att bilda en loop, vilket kan ses som ett tidigt strömchiffet.&lt;/p&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
+&lt;p&gt;Claude Shannon definierade i sin berömda artikel &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; begreppet perfekt sekretess. Perfekt sekretess innebär att ett system inte kan knäckas även om angriparen har obegränsade beräkningskraft. Från ett informationsteoretiskt perspektiv gäller att perfekt sekretess innebär att ingen information om meddelandets innehåll fås genom att observera kryptotexten. (Man kan dock argumentera att man kan se att ett meddelande skickats och även dess längd.)&lt;/p&gt;
 
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
+&lt;p&gt;Shannon visade att för OTP har vi perfekt sekretess om följande villkor är uppfyllda:
+* Nyckeln är helt slumpvis genererad.
+* Nyckelns längd är minst lika lång som medelandet.&lt;/p&gt;
 
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
+&lt;h2 id=&#34;praktiska-aspekter&#34;&gt;Praktiska aspekter&lt;/h2&gt;
 
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
+&lt;p&gt;OTP vhar många egenskaper som gör det trevligt. Det har perfekt sekretess vilket är bra för säkerheten. Dessutom är XOR-operationen extremt snabb vilket gör att vi kan kryotera med väldigt hög hastighet. Det stora problemet är dess krav på en nyckel med samma längd som meddelandet. Förutom att praktiskt kunna lagra stora nycklar måste vi också ha ett säkert sätt att öveföra nyckeln till mottagaren. Om vi kan finna ett säkert sätt att öveföra nyckeln har vi troligen inget behov av att kryptera då vi kan skicka meddelandet på samma sätt. Meddelandet är ju inte längre än nyckeln.&lt;/p&gt;
 
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+&lt;p&gt;Dessutom måste nyckeln vara helt slumpmässigt genererad. Det är inte enkelt att hitta en tillräckligt bra slupgenerator.&lt;/p&gt;
+
+&lt;p&gt;Ett alternativ till OTP är att ersätta en helt slumpvis nyckelström med en sekvens av pseudo-slumptal. Pseudo-slumptal är tal som genereras från en algoritm och är därmed inte alls slumpvisa, men om man inte känner till exakt hur de är genererade ser de ut som slumptal. När vi på detta sätt ersätter slumptal med pseudo-slumptal får vi additiva strömchiffer.&lt;/p&gt;
+
+&lt;h2 id=&#34;referenser&#34;&gt;Referenser&lt;/h2&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;Vernam G. S., Secret signaling system, us patent 1310719, 1919.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;Vernam G. S., Systems for secret wire and radio telegraphic communications, Journal of the american institute of electrical engineers, vol. XLV, 1926, pp. 109-115.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;Shannon, C. E., Communication theory of secrecy systems, Bell System Technical Journal 28 (4), 1949, pp. 656-715.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Example Page 2</title>
-      <link>/stream/intro/example2/</link>
+      <link>/stream/intro/security/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
       
-      <guid>/stream/intro/example2/</guid>
+      <guid>/stream/intro/security/</guid>
       <description>
 
 &lt;p&gt;Here are some more tips for getting started with Academic:&lt;/p&gt;

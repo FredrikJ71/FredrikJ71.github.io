@@ -329,6 +329,16 @@
 
   </div>
   
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/stream/intro/otp/">One Time Pad</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/stream/intro/security/">Säkerhet</a>
+
+  </div>
+  
   
 </nav>
 
@@ -344,8 +354,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#test">Test</a></li>
 <li><a href="#strömchiffer">Strömchiffer</a></li>
+<li><a href="#definition">Definition</a></li>
 <li><a href="#delete-tutorials">Delete tutorials</a></li>
 <li><a href="#update-site-menu">Update site menu</a></li>
 <li><a href="#update-the-docs-menu">Update the docs menu</a></li>
@@ -371,22 +381,30 @@
           <div class="article-style" itemprop="articleBody">
             
 
-<h2 id="test">Test</h2>
-
-<p>Ser om detta skickas till public repo.</p>
-
 <h2 id="strömchiffer">Strömchiffer</h2>
 
 <p>I dagens samhälle är vi vana vid att överföra känslig data över Internet. Exempelvis sköts en majoritet av våra bankärenden online. I medelanden som skickas mellan
 kund och bank finns information om personnummer, kontonummer och saldot på kontot. Dessa meddelande skickas ut på Internet dör de skickas från router till
-router tills de slutligen når fram till mottagaren. En egenskap som är viktig för tillförlitligheten är att vi inte från början vet vilka vägar
-våra meddelanden skickas. Detta innebär att det finns en risk någon kan snappa upp vårt meddelande och läsa dess innehåll. För att skydda våra meddelande
+router tills de slutligen når fram till mottagaren. För att skydda våra meddelande
 från avlyssning kan ett strömchiffer eller annan typ av kryptering användas.</p>
 
-<p>Den grundläggande funktionen för kryptering är att det meddelande som ska skyddas, även kallat klartext, omvandlas till ett krypterat meddelande. Det
-krypterade meddelandet kallas för kryptotext. Avsändare och mottagare har från innan sändning kommit överens om hur meddelandet ska krypteras. Detta
-innebär att sändaren kan omvandla klartexten till en kryptotext som mottagaren senare kan dekryptera och återskapa klartexten. För en avlyssnare
-som inte känner till alla detaljer om krypteringen ser kryptotexten ut som en massa symboler utan mönster eller betydelse.</p>
+<p>Strömchiffer är en typ av symmetrisk kryptering. Det som är gemensamt för symmetrisk kryptering är att sändare och mottagare delar en hemlighet eller krypteringsnyckel. Den vanligaste typen av strömchiffer är den typ som kallas additiva strömchiffer. Dessa fungerar på följande sätt. Utifrån den symmetriska nyckeln och ett initieringsvärde, IV, skapas en nyckelström. Ett meddelande krypteras därefter genom att addera nyckelströmmen till klartexten.
+<img src="/img/stream/StreamCipher.png" alt="Principen för strömchiffer" /></p>
+
+<p>För att dekryptera den mottagna kryptotexten genererar mottagaren samma nyckelström som sändaren. Därefter kan klartexten räknas ut.</p>
+
+<h2 id="definition">Definition</h2>
+
+<p>Här följer en lite mer formell definition av binära additiva strömchiffer.</p>
+
+<p>Låt $M = M_1, M_2, \ldots$ vara en ström av bitar som ska krypteras, dvs. $M_i \in {0,1}$. Låt $K = K_1, K_2, \ldots , K_k$ vara en symmetrisk nyckel med $k$ bitar och $IV = IV_1, IV_2, \ldots, IV_n$ vara en publik sekvens med $n$ bitar.</p>
+
+<p>Generatorn $G$ är en algoritm som tar nyckeln $K$ och sekvensen $IV$ som inparametrar och genererar en sekvens av bitar $Z = Z_1, Z_2 , \ldots$ som utdata. Sekvensen $Z$ kallas för nyckelström.</p>
+
+<p>Kryptotexten $C = C_1, C_2$ är även den en sekvens av bitar och beräknas enligt $C_i = M_i + Z_i \mod 2$ för alla $i.$</p>
+
+<p>Eftersom additon modulo 2, eller XOR, är sin egna invers gäller att vi kan dekryptera enligt
+$M_i = C_i + Z_i \mod 2$ för alla $i.$</p>
 
 <p>Viktigt med publika metoder för kryptering.</p>
 
@@ -461,7 +479,7 @@ $M = M_1 M_2.$</p>
         </div>
 
         <div class="body-footer">
-          Last updated on Jul 11, 2019
+          Last updated on Oct 27, 2019
         </div>
 
       </article>
