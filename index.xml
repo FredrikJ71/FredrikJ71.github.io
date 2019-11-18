@@ -6,7 +6,7 @@
     <description>Recent content on FredrikJ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 12 Nov 2019 00:00:00 +0100</lastBuildDate>
     
 	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>One Time Pad OTP</title>
       <link>/stream/intro/otp/</link>
-      <pubDate>Wed, 06 Nov 2019 00:00:00 +0100</pubDate>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0100</pubDate>
       
       <guid>/stream/intro/otp/</guid>
       <description>
@@ -33,13 +33,14 @@
 
 &lt;h2 id=&#34;säkerhet&#34;&gt;Säkerhet&lt;/h2&gt;
 
-&lt;p&gt;I en senare publikation av Vernam &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; jämförs olika typer krypteringsmaskiner. I artikeln påpekas det att man inte får kryptera mer data med maskinen än längden på nyckelremsan, därav namnet One Time Pad. Det ska dock noteras att Vernam hade ett förslag på hur nyckelremsan kunde återvinnas genom att bilda en loop, vilket kan ses som ett tidigt strömchiffet.&lt;/p&gt;
+&lt;p&gt;I en senare publikation av Vernam &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; jämförs olika typer krypteringsmaskiner. I artikeln påpekas det att man inte får kryptera två meddelanden med samma nyckel, därav namnet One Time Pad. Det ska dock noteras att Vernam hade ett förslag på hur nyckelremsan kunde återvinnas genom att bilda en loop, vilket kan ses som ett tidigt strömchiffet.&lt;/p&gt;
 
 &lt;p&gt;Claude Shannon definierade i sin berömda artikel &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; begreppet perfekt sekretess. Perfekt sekretess innebär att ett system inte kan knäckas även om angriparen har obegränsade beräkningskraft. Från ett informationsteoretiskt perspektiv gäller att perfekt sekretess innebär att ingen information om meddelandets innehåll fås genom att observera kryptotexten. (Man kan dock argumentera att man kan se att ett meddelande skickats och även dess längd.)&lt;/p&gt;
 
 &lt;p&gt;Shannon visade att för OTP har vi perfekt sekretess om följande villkor är uppfyllda:
 * Nyckeln är helt slumpvis genererad.
-* Nyckelns längd är minst lika lång som medelandet.&lt;/p&gt;
+* Nyckelns längd är lika lång som medelandet.
+* Nyckeln får bara användas för att kryptera ett meddelande.&lt;/p&gt;
 
 &lt;h2 id=&#34;praktiska-aspekter&#34;&gt;Praktiska aspekter&lt;/h2&gt;
 
@@ -49,7 +50,7 @@
 
 &lt;p&gt;Ett alternativ till OTP är att ersätta en helt slumpvis nyckelström med en sekvens av pseudo-slumptal. Pseudo-slumptal är tal som genereras från en algoritm och är därmed inte alls slumpvisa, men om man inte känner till exakt hur de är genererade ser de ut som slumptal. När vi på detta sätt ersätter slumptal med pseudo-slumptal får vi additiva strömchiffer.&lt;/p&gt;
 
-&lt;h2 id=&#34;referenser&#34;&gt;Referenser&lt;/h2&gt;
+&lt;h2 id=&#34;källförteckning&#34;&gt;Källförteckning&lt;/h2&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
@@ -67,38 +68,46 @@
     </item>
     
     <item>
-      <title>Example Page 2</title>
+      <title>Säkerhet för strömchiffer</title>
       <link>/stream/intro/security/</link>
-      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0100</pubDate>
       
       <guid>/stream/intro/security/</guid>
       <description>
 
-&lt;p&gt;Here are some more tips for getting started with Academic:&lt;/p&gt;
+&lt;p&gt;Ett krytosysyem kan vara intressanta och spännande att studera men för att kunna användas i praktiken krävs det även att det är säkert. Det finns flera viktiga säkerhetsaspekter att ta hänsyn till.&lt;/p&gt;
 
-&lt;h2 id=&#34;tip-3&#34;&gt;Tip 3&lt;/h2&gt;
+&lt;h2 id=&#34;förutsättningar-för-angriparen&#34;&gt;Förutsättningar för angriparen&lt;/h2&gt;
+
+&lt;p&gt;När man diskuterar säkerhet för olika kryptosystem är det viktigt att definiera förutsättningar för angriparen. Från den klassiska modellen för överföring av krypterade meddelanden är det självklart att angriparen har tillgång till kryptotexten. En modell för attack där angriparen enbart har tillgång till kryptotexten kallas för ciphertext only.&lt;/p&gt;
+
+&lt;p&gt;En lärdom från historien är att abgripare oftast har lite mer information än enbart kryptotexten. Med hjälp av lite kunskap om i vilket sammanhang kryoteringen sker så kan ofta angriparen även känna till delar av meddelandet. I vissa fall kan man även göra antagandet att angriparen känner till hela meddelandet som skickats. Målet för angriparen blir att utnyttja det kända meddelandet eller delar av meddelandet samt tillhörande kryptotext och hitta den hemliga meddelandet eller kunna dekryptera övriga meddelanden som krypterats med samma meddelande. Denna typ av angrip kallas för known plaintext.&lt;/p&gt;
+
+&lt;p&gt;Angrepp av typen known plaintext innebär att angriparen känner ett meddelande $M = M_1,\ldots, M_N$ och tillhörande kryptotext $C= C_1,\ldots, C_N$. Angriparen använder $M$ och $C$ för att beräkna nyckelströmmen $Z = Z_1,\ldots,Z_N$, där $Z_i = M_i$ XOR $C_i, 1 \leq i \leq N$. Alltså kan vi ofta förutsätta att en angripare har observerat delar av nyckelströmmen från generatorn. Målet är att använda den observerade nyckelströmmen och kunna hitta resten av nyckelströmmen eller den hemliga nyckeln.&lt;/p&gt;
+
+&lt;p&gt;Man kan även tänka sig andra typer av modeller för att angripa ett strömchiffer. Dessa angrep kan exempelvis bygga på någon eller några av följande principer:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Skilja en given kryototext eller nyckelström från en helt slumpmässig sekvens av bitar.&lt;/li&gt;
+&lt;li&gt;Angriparen kan observera nyckelströmmen från ett antal nycklar som visserligen är okända men med ett känt samband. (Related-key) Exempelvis kan nycklarna skilja sig åt enbart i ett fåtal bitar.&lt;/li&gt;
+&lt;li&gt;Angriparen ett flertal nyckelströmmar som har krypterats med samma nyckel men med olika IV. (related-IV)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;lång-period&#34;&gt;Lång period&lt;/h2&gt;
 
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
 
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
+&lt;h2 id=&#34;ser-slumpmässiga-ut&#34;&gt;Ser &amp;ldquo;slumpmässiga&amp;rdquo; ut&lt;/h2&gt;
 
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
+&lt;p&gt;Test för att avgöra om de är tillräckligt slumpvisa i sitt bettende. predictor distingisher.&lt;/p&gt;
 
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
+&lt;h2 id=&#34;hitta-nyckel-eller-tillstånd&#34;&gt;Hitta nyckel eller tillstånd&lt;/h2&gt;
 
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+&lt;p&gt;Uttömande prövning. Kryptoanalys för att hitta svagheter. Varianter related key och related IV.&lt;/p&gt;
 
-&lt;h2 id=&#34;tip-4&#34;&gt;Tip 4&lt;/h2&gt;
+&lt;h2 id=&#34;strömchiffers-begränsningar&#34;&gt;Strömchiffers begränsningar&lt;/h2&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
-
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
-
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
-
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
-
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+&lt;p&gt;Vi får aldrig använda samma nyckel och IV för att kryptera två meddelanden. Genom att flippa bitar kan vi lura mottagare. Kräver att vi använder någon form av Message Authentication Code.&lt;/p&gt;
 </description>
     </item>
     

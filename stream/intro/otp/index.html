@@ -124,9 +124,9 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
 Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kryptera telegraferad information 1."><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-11-06T00:00:00&#43;01:00">
+  <meta property="article:published_time" content="2019-11-12T00:00:00&#43;01:00">
   
-  <meta property="article:modified_time" content="2019-11-06T00:00:00&#43;01:00">
+  <meta property="article:modified_time" content="2019-11-12T00:00:00&#43;01:00">
   
 
   
@@ -358,7 +358,7 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
 <li><a href="#historik">Historik</a></li>
 <li><a href="#säkerhet">Säkerhet</a></li>
 <li><a href="#praktiska-aspekter">Praktiska aspekter</a></li>
-<li><a href="#referenser">Referenser</a></li>
+<li><a href="#källförteckning">Källförteckning</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -395,13 +395,14 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
 
 <h2 id="säkerhet">Säkerhet</h2>
 
-<p>I en senare publikation av Vernam <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> jämförs olika typer krypteringsmaskiner. I artikeln påpekas det att man inte får kryptera mer data med maskinen än längden på nyckelremsan, därav namnet One Time Pad. Det ska dock noteras att Vernam hade ett förslag på hur nyckelremsan kunde återvinnas genom att bilda en loop, vilket kan ses som ett tidigt strömchiffet.</p>
+<p>I en senare publikation av Vernam <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> jämförs olika typer krypteringsmaskiner. I artikeln påpekas det att man inte får kryptera två meddelanden med samma nyckel, därav namnet One Time Pad. Det ska dock noteras att Vernam hade ett förslag på hur nyckelremsan kunde återvinnas genom att bilda en loop, vilket kan ses som ett tidigt strömchiffet.</p>
 
 <p>Claude Shannon definierade i sin berömda artikel <sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup> begreppet perfekt sekretess. Perfekt sekretess innebär att ett system inte kan knäckas även om angriparen har obegränsade beräkningskraft. Från ett informationsteoretiskt perspektiv gäller att perfekt sekretess innebär att ingen information om meddelandets innehåll fås genom att observera kryptotexten. (Man kan dock argumentera att man kan se att ett meddelande skickats och även dess längd.)</p>
 
 <p>Shannon visade att för OTP har vi perfekt sekretess om följande villkor är uppfyllda:
 * Nyckeln är helt slumpvis genererad.
-* Nyckelns längd är minst lika lång som medelandet.</p>
+* Nyckelns längd är lika lång som medelandet.
+* Nyckeln får bara användas för att kryptera ett meddelande.</p>
 
 <h2 id="praktiska-aspekter">Praktiska aspekter</h2>
 
@@ -411,7 +412,7 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
 
 <p>Ett alternativ till OTP är att ersätta en helt slumpvis nyckelström med en sekvens av pseudo-slumptal. Pseudo-slumptal är tal som genereras från en algoritm och är därmed inte alls slumpvisa, men om man inte känner till exakt hur de är genererade ser de ut som slumptal. När vi på detta sätt ersätter slumptal med pseudo-slumptal får vi additiva strömchiffer.</p>
 
-<h2 id="referenser">Referenser</h2>
+<h2 id="källförteckning">Källförteckning</h2>
 <div class="footnotes">
 
 <hr />
@@ -441,7 +442,7 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
   
   <div class="post-nav-item">
     <div class="meta-nav">Next</div>
-    <a href="/stream/intro/security/" rel="prev">Example Page 2</a>
+    <a href="/stream/intro/security/" rel="prev">Säkerhet för strömchiffer</a>
   </div>
   
 </div>
@@ -451,7 +452,7 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
         </div>
 
         <div class="body-footer">
-          Last updated on Nov 6, 2019
+          Last updated on Nov 12, 2019
         </div>
 
       </article>

@@ -356,9 +356,9 @@
 <ul>
 <li><a href="#strömchiffer">Strömchiffer</a></li>
 <li><a href="#definition">Definition</a></li>
-<li><a href="#delete-tutorials">Delete tutorials</a></li>
-<li><a href="#update-site-menu">Update site menu</a></li>
-<li><a href="#update-the-docs-menu">Update the docs menu</a></li>
+<li><a href="#kerckhoffs-princip-och-krypteringsnycklar">Kerckhoffs Princip och krypteringsnycklar</a></li>
+<li><a href="#design-av-nyckelgeneratorn">Design av nyckelgeneratorn</a></li>
+<li><a href="#källförteckning">Källförteckning</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -383,82 +383,64 @@
 
 <h2 id="strömchiffer">Strömchiffer</h2>
 
-<p>I dagens samhälle är vi vana vid att överföra känslig data över Internet. Exempelvis sköts en majoritet av våra bankärenden online. I medelanden som skickas mellan
-kund och bank finns information om personnummer, kontonummer och saldot på kontot. Dessa meddelande skickas ut på Internet dör de skickas från router till
-router tills de slutligen når fram till mottagaren. För att skydda våra meddelande
+<p>I dagens samhälle är vi vana vid att överföra känslig data över Internet. Exempelvis sköts en majoritet av våra privata bankärenden online. I meddelanden som skickas mellan
+kund och bank finns information om personnummer, kontonummer och saldot på kontot. Dessa meddelande skickas ut på Internet där de skickas från router till
+router tills de slutligen når fram till mottagaren. För att skydda våra meddelanden
 från avlyssning kan ett strömchiffer eller annan typ av kryptering användas.</p>
 
-<p>Strömchiffer är en typ av symmetrisk kryptering. Det som är gemensamt för symmetrisk kryptering är att sändare och mottagare delar en hemlighet eller krypteringsnyckel. Den vanligaste typen av strömchiffer är den typ som kallas additiva strömchiffer. Dessa fungerar på följande sätt. Utifrån den symmetriska nyckeln och ett initieringsvärde, IV, skapas en nyckelström. Ett meddelande krypteras därefter genom att addera nyckelströmmen till klartexten.
+<p>Strömchiffer är en typ av symmetrisk kryptering, vilket innebär att sändare och mottagare delar en hemlighet eller krypteringsnyckel. Den vanligaste typen av strömchiffer är den typ som kallas additiva strömchiffer. Dessa fungerar på följande sätt. Utifrån den symmetriska nyckeln och ett initieringsvärde, IV, skapas en nyckelström. Ett meddelande krypteras därefter genom att addera nyckelströmmen till klartexten.
 <img src="/img/stream/StreamCipher.png" alt="Principen för strömchiffer" /></p>
 
-<p>För att dekryptera den mottagna kryptotexten genererar mottagaren samma nyckelström som sändaren. Därefter kan klartexten räknas ut.</p>
+<p>För att dekryptera den mottagna kryptotexten genererar mottagaren samma nyckelström som sändaren. Med hjälp av nyckelströmmen kan mottagaren dekryptera kryptotexten och återskapa klartexten.</p>
 
 <h2 id="definition">Definition</h2>
 
 <p>Här följer en lite mer formell definition av binära additiva strömchiffer.</p>
 
-<p>Låt $M = M_1, M_2, \ldots$ vara en ström av bitar som ska krypteras, dvs. $M_i \in {0,1}$. Låt $K = K_1, K_2, \ldots , K_k$ vara en symmetrisk nyckel med $k$ bitar och $IV = IV_1, IV_2, \ldots, IV_n$ vara en publik sekvens med $n$ bitar.</p>
+<p>Låt $M = M_1, M_2, \ldots, M_L$ vara en ström av $L$ bitar som ska krypteras, dvs. $M_i \in {0,1}$. Låt $K = K_1, K_2, \ldots , K_k$ vara en symmetrisk nyckel med $k$ bitar och $IV = IV_1, IV_2, \ldots, IV_n$ vara en publik sekvens med $n$ bitar.</p>
 
-<p>Generatorn $G$ är en algoritm som tar nyckeln $K$ och sekvensen $IV$ som inparametrar och genererar en sekvens av bitar $Z = Z_1, Z_2 , \ldots$ som utdata. Sekvensen $Z$ kallas för nyckelström.</p>
+<p>Generatorn $G$ är en algoritm som tar nyckeln $K$ och sekvensen $IV$ som inparametrar och genererar en sekvens av bitar som utdata. För att kryptera ett meddelande med $L$ bitar låter vi generatorn skapa en nyckelström med längd $L, Z = Z_1, Z_2, \ldots, Z_L$.</p>
 
-<p>Kryptotexten $C = C_1, C_2$ är även den en sekvens av bitar och beräknas enligt $C_i = M_i + Z_i \mod 2$ för alla $i.$</p>
+<p>Kryptotexten $C = C_1, C_2, \ldots, C_L$ är även den en sekvens av $L$ bitar och beräknas enligt $C_i = M_i + Z_i \mod 2, 1 \le i \le L$.</p>
 
-<p>Eftersom additon modulo 2, eller XOR, är sin egna invers gäller att vi kan dekryptera enligt
-$M_i = C_i + Z_i \mod 2$ för alla $i.$</p>
+<p>Additon modulo 2, eller XOR, är sin egna invers, vilket innebär att för alla $X$ gäller att $X$ XOR $X = 0$. Dekryptering görs då på samma sätt som kryptering, $M_i = C_i + Z_i \mod 2, 1 \le i \le L$. Att samma funktion används för kryptering och dekryptering är en viktig egenskap för strömchiffer.</p>
 
-<p>Viktigt med publika metoder för kryptering.</p>
+<h2 id="kerckhoffs-princip-och-krypteringsnycklar">Kerckhoffs Princip och krypteringsnycklar</h2>
 
-<p>Hemlighet kallas nyckel. Dessutom IV för att inte behöva nyckel så ofta. Kommer mer senare.</p>
+<p>Redan 1883 formulerade Auguste Kerckhoffs en viktig princip som man alltid bör följa vid val av kryptosystem<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>. Kerckhoffs princip säger att ett krypteringssystem ska vara säkert även om en angripare känner till hur krypteringssystemet fungerar. Om vi följer denna princip kan vi alltid anta att angriparen har all kunskap om vårt system förutom den symmetriska nyckeln som delas av sändare och mottagare.</p>
 
-<p>Samtidigt
-När man vill överföra information i en situation med risk för avlyssning kan ett strömchiffer användas.<br />
-För att kryptera data vid överföring eller lagring av data använder man symmetriska krypteringssyetem. I ett symmetriskt krypteringssystemen
-använder man samma krypteringsnyckel vid kryptering som vid dekryptering. En krypteringsnyckel består i moderna digitala system av en sekvens av
-de binära soffrorna, ett och noll. Det antal bitar som utgör nyckeln kallas för nyckellängd. För bra säkerhet kräver man i dagsläget minst 128-bitas nyckel.
-För extra känslig data rekommenderas 192 eller 256 bitar och för enklare system med begränsade resurser kan man nöja sig med 80-bitar. Man kan fråga sig varför man inte
-alltid använder många bitar i nyckeln. Anledningen är mycket enkel. Om vi har många bitar i nyckeln behöver vi mer minne eller mer CPU-kraft för att
-kryptera.</p>
+<p>I moderna kryoteringssystem består nyckeln av en sekvens av bitar. Ett sätt för angriparen att angripa vårt system är då att gissa värdet på krypteringsnyckeln och försöka dekryptera kryptotexten. Om angriparen gissar rätt nyckel kan angriparen återskapa klartexten. I annat fall kan vi anta att angriparen ser att det är fel nyckel och gissar på nytt.</p>
 
-<p>Detta ska bli matematisk text.
-$M = M_1 M_2.$</p>
+<p>Utifrån ovanstående argumentation kan vi dra slutsatsen att vi måste ha nycklar med tillräckligt antal bitar för att det inte ska vara praktiskt möjligt för en angripare att bröva alla möjliga nycklar. (Naturligtvis finns den en chans att angriparen skulle gissa rätt redan efter ett par försök med sannolikheten för detta är väldigt liten.) Hur många bitar är då tillräckligt många? När detta skrivs (2019) anses att symmetriska nycklar för normal säkerhet ska vara minst 128 bitar långa. Vissa mindre system som har väldigt lite beräkningskapacitet eller arbetsminne kan klara sig med 80 bitar. För data som kräver hög säkerhet och lagring i arkiv används ofta 192 eller 256 bitars kryptering.</p>
 
-<p>Antal</p>
+<p>Eftersom det blir svårare att gissa en nyckel om den innehåller många bitar kan man tycka att det skulle varit bättre med ännu längre nycklar. Men det är inte riktigt så enkelt. För det första innebär långa nycklar också att det tar längre tid att kryptera och avkryptera även för de som har nyckeln. För det andra måste dessa nycklar lagras på ett säkert sätt och det blir inte enklare om nycklarna blir för stora. Dessutom måste krypteringsalgoritmen vara tillräckligt bra så att det inte finns några kryptoanalytiska attacker som är effektivare än uttömmande prövning.</p>
 
-<ul>
-<li><strong>Online courses</strong></li>
-<li><strong>Project or software documentation</strong></li>
-<li><strong>Tutorials</strong></li>
-</ul>
+<h2 id="design-av-nyckelgeneratorn">Design av nyckelgeneratorn</h2>
 
-<p>The <code>courses</code> folder may be renamed. For example, we can rename it to <code>docs</code> for software/project documentation or <code>tutorials</code> for creating an online course.</p>
+<p>Genom åren har ett flertal algortimer för strömchiffer föreslagits. Om man tittar på moderna strömchiffer kan de grovt delas in i 4 kategorier.</p>
 
-<h2 id="delete-tutorials">Delete tutorials</h2>
+<ol>
+<li><p>Optimerade för hårdvara. Denna kategori består att generatorer som kan implementeras effektivt i hårdvara. En vanlig byggsten i dessa system är olika typer av skiftregister.</p></li>
 
-<p><strong>To remove these pages, delete the <code>courses</code> folder and see below to delete the associated menu link.</strong></p>
+<li><p>Optimerade för mjukvara. I denna kategori hitta vi ett antal strömchiffer är väldigt effektiva och snabba när de implementeras i mjukvara. Målet för dem är att kryptera data i realtid när de skicks över dagens snabba nätverk.</p></li>
 
-<h2 id="update-site-menu">Update site menu</h2>
+<li><p>Blockchiffer i olika strömchiffer-&ldquo;modes&rdquo;. Exempel här är AES-GCM <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> som används bland annat i våra trådlösa nätverk. Syftet med dessa är att kombinera ett välstuderat blockchoffer med de fördelar ett strömchiffer har.</p></li>
 
-<p>After renaming or deleting the <code>courses</code> folder, you may wish to update any <code>[[main]]</code> menu links to it by editing your menu configuration at <code>config/_default/menus.toml</code>.</p>
+<li><p>Generatorer som vilar på olika säkerhetsbevis. Tanken med denna typ av generatorer är att man kan bevisa att de är lika säkra som att lösa vissa svåra problem inom datavetenskapen. Även om dessa system visserligen vilar på någon form av säkerhetsbevis är de oftast inte effektiva, vilket gör att de har en begränsad användning.</p></li>
+</ol>
 
-<p>For example, if you delete this folder, you can remove the following from your menu configuration:</p>
+<h2 id="källförteckning">Källförteckning</h2>
+<div class="footnotes">
 
-<pre><code class="language-toml">[[main]]
-  name = &quot;Courses&quot;
-  url = &quot;courses/&quot;
-  weight = 50
-</code></pre>
+<hr />
 
-<p>Or, if you are creating a software documentation site, you can rename the <code>courses</code> folder to <code>docs</code> and update the associated <em>Courses</em> menu configuration to:</p>
-
-<pre><code class="language-toml">[[main]]
-  name = &quot;Docs&quot;
-  url = &quot;docs/&quot;
-  weight = 50
-</code></pre>
-
-<h2 id="update-the-docs-menu">Update the docs menu</h2>
-
-<p>If you use the <em>docs</em> layout, note that the name of the menu in the front matter should be in the form <code>[menu.X]</code> where <code>X</code> is the folder name. Hence, if you rename the <code>courses/example/</code> folder, you should also rename the menu definitions in the front matter of files within <code>courses/example/</code> from <code>[menu.example]</code> to <code>[menu.&lt;NewFolderName&gt;]</code>.</p>
+<ol>
+<li id="fn:1">Kerckhoffs, Auguste. La cryptographie militaire, Journal des sciences militaires 1883.
+ <a class="footnote-return" href="#fnref:1"><sup>^</sup></a></li>
+<li id="fn:2">Dworkin, Morris. Recommendation for block cipher modes of operation: Galois/counter mode (GCM) and GMAC, NIST 800-38D.
+ <a class="footnote-return" href="#fnref:2"><sup>^</sup></a></li>
+</ol>
+</div>
 
           </div>
 
@@ -479,7 +461,7 @@ $M = M_1 M_2.$</p>
         </div>
 
         <div class="body-footer">
-          Last updated on Oct 27, 2019
+          Last updated on Nov 17, 2019
         </div>
 
       </article>

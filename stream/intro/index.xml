@@ -14,7 +14,7 @@
     <item>
       <title>One Time Pad OTP</title>
       <link>/stream/intro/otp/</link>
-      <pubDate>Wed, 06 Nov 2019 00:00:00 +0100</pubDate>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0100</pubDate>
       
       <guid>/stream/intro/otp/</guid>
       <description>One Time Pad (OTP) är ett kryptosystem som är över 100 år och bevisat säker. Problemet är dock att OTP är svårt att implementera. Anledningen till detta problem kommer att bli uppenbart när man sett dess villkor. OTP är viktigt eftersom strömchiffer kan ses som ett försök att skapa ett OTP-liknande system som är praktiskt, även om strömchiffer inte ger perfekt sekretess.
@@ -22,13 +22,13 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
     </item>
     
     <item>
-      <title>Example Page 2</title>
+      <title>Säkerhet för strömchiffer</title>
       <link>/stream/intro/security/</link>
-      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0100</pubDate>
       
       <guid>/stream/intro/security/</guid>
-      <description>Here are some more tips for getting started with Academic:
-Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus.</description>
+      <description>Ett krytosysyem kan vara intressanta och spännande att studera men för att kunna användas i praktiken krävs det även att det är säkert. Det finns flera viktiga säkerhetsaspekter att ta hänsyn till.
+Förutsättningar för angriparen När man diskuterar säkerhet för olika kryptosystem är det viktigt att definiera förutsättningar för angriparen. Från den klassiska modellen för överföring av krypterade meddelanden är det självklart att angriparen har tillgång till kryptotexten. En modell för attack där angriparen enbart har tillgång till kryptotexten kallas för ciphertext only.</description>
     </item>
     
   </channel>

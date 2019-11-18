@@ -27,8 +27,8 @@
   
     
   
-  <meta name="description" content="Here are some more tips for getting started with Academic:
-Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus.">
+  <meta name="description" content="Ett krytosysyem kan vara intressanta och spännande att studera men för att kunna användas i praktiken krävs det även att det är säkert. Det finns flera viktiga säkerhetsaspekter att ta hänsyn till.
+Förutsättningar för angriparen När man diskuterar säkerhet för olika kryptosystem är det viktigt att definiera förutsättningar för angriparen. Från den klassiska modellen för överföring av krypterade meddelanden är det självklart att angriparen har tillgång till kryptotexten. En modell för attack där angriparen enbart har tillgång till kryptotexten kallas för ciphertext only.">
 
   
   <link rel="alternate" hreflang="en-us" href="/stream/intro/security/">
@@ -119,21 +119,21 @@ Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tell
   
   <meta property="og:site_name" content="FredrikJ">
   <meta property="og:url" content="/stream/intro/security/">
-  <meta property="og:title" content="Example Page 2 | FredrikJ">
-  <meta property="og:description" content="Here are some more tips for getting started with Academic:
-Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus."><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:title" content="Säkerhet för strömchiffer | FredrikJ">
+  <meta property="og:description" content="Ett krytosysyem kan vara intressanta och spännande att studera men för att kunna användas i praktiken krävs det även att det är säkert. Det finns flera viktiga säkerhetsaspekter att ta hänsyn till.
+Förutsättningar för angriparen När man diskuterar säkerhet för olika kryptosystem är det viktigt att definiera förutsättningar för angriparen. Från den klassiska modellen för överföring av krypterade meddelanden är det självklart att angriparen har tillgång till kryptotexten. En modell för attack där angriparen enbart har tillgång till kryptotexten kallas för ciphertext only."><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+  <meta property="article:published_time" content="2019-11-12T00:00:00&#43;01:00">
   
-  <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
-  
-
+  <meta property="article:modified_time" content="2019-11-12T00:00:00&#43;01:00">
   
 
   
 
-  <title>Example Page 2 | FredrikJ</title>
+  
+
+  <title>Säkerhet för strömchiffer | FredrikJ</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
@@ -355,8 +355,11 @@ Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tell
 <ul>
 <li>
 <ul>
-<li><a href="#tip-3">Tip 3</a></li>
-<li><a href="#tip-4">Tip 4</a></li>
+<li><a href="#förutsättningar-för-angriparen">Förutsättningar för angriparen</a></li>
+<li><a href="#lång-period">Lång period</a></li>
+<li><a href="#ser-slumpmässiga-ut">Ser &ldquo;slumpmässiga&rdquo; ut</a></li>
+<li><a href="#hitta-nyckel-eller-tillstånd">Hitta nyckel eller tillstånd</a></li>
+<li><a href="#strömchiffers-begränsningar">Strömchiffers begränsningar</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -374,36 +377,44 @@ Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tell
       <article class="article" itemscope itemtype="http://schema.org/Article">
 
         <div class="docs-article-container">
-          <h1 itemprop="name">Example Page 2</h1>
+          <h1 itemprop="name">Säkerhet för strömchiffer</h1>
 
           <div class="article-style" itemprop="articleBody">
             
 
-<p>Here are some more tips for getting started with Academic:</p>
+<p>Ett krytosysyem kan vara intressanta och spännande att studera men för att kunna användas i praktiken krävs det även att det är säkert. Det finns flera viktiga säkerhetsaspekter att ta hänsyn till.</p>
 
-<h2 id="tip-3">Tip 3</h2>
+<h2 id="förutsättningar-för-angriparen">Förutsättningar för angriparen</h2>
+
+<p>När man diskuterar säkerhet för olika kryptosystem är det viktigt att definiera förutsättningar för angriparen. Från den klassiska modellen för överföring av krypterade meddelanden är det självklart att angriparen har tillgång till kryptotexten. En modell för attack där angriparen enbart har tillgång till kryptotexten kallas för ciphertext only.</p>
+
+<p>En lärdom från historien är att abgripare oftast har lite mer information än enbart kryptotexten. Med hjälp av lite kunskap om i vilket sammanhang kryoteringen sker så kan ofta angriparen även känna till delar av meddelandet. I vissa fall kan man även göra antagandet att angriparen känner till hela meddelandet som skickats. Målet för angriparen blir att utnyttja det kända meddelandet eller delar av meddelandet samt tillhörande kryptotext och hitta den hemliga meddelandet eller kunna dekryptera övriga meddelanden som krypterats med samma meddelande. Denna typ av angrip kallas för known plaintext.</p>
+
+<p>Angrepp av typen known plaintext innebär att angriparen känner ett meddelande $M = M_1,\ldots, M_N$ och tillhörande kryptotext $C= C_1,\ldots, C_N$. Angriparen använder $M$ och $C$ för att beräkna nyckelströmmen $Z = Z_1,\ldots,Z_N$, där $Z_i = M_i$ XOR $C_i, 1 \leq i \leq N$. Alltså kan vi ofta förutsätta att en angripare har observerat delar av nyckelströmmen från generatorn. Målet är att använda den observerade nyckelströmmen och kunna hitta resten av nyckelströmmen eller den hemliga nyckeln.</p>
+
+<p>Man kan även tänka sig andra typer av modeller för att angripa ett strömchiffer. Dessa angrep kan exempelvis bygga på någon eller några av följande principer:</p>
+
+<ul>
+<li>Skilja en given kryototext eller nyckelström från en helt slumpmässig sekvens av bitar.</li>
+<li>Angriparen kan observera nyckelströmmen från ett antal nycklar som visserligen är okända men med ett känt samband. (Related-key) Exempelvis kan nycklarna skilja sig åt enbart i ett fåtal bitar.</li>
+<li>Angriparen ett flertal nyckelströmmar som har krypterats med samma nyckel men med olika IV. (related-IV)</li>
+</ul>
+
+<h2 id="lång-period">Lång period</h2>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.</p>
 
-<p>Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.</p>
+<h2 id="ser-slumpmässiga-ut">Ser &ldquo;slumpmässiga&rdquo; ut</h2>
 
-<p>Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.</p>
+<p>Test för att avgöra om de är tillräckligt slumpvisa i sitt bettende. predictor distingisher.</p>
 
-<p>Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.</p>
+<h2 id="hitta-nyckel-eller-tillstånd">Hitta nyckel eller tillstånd</h2>
 
-<p>Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.</p>
+<p>Uttömande prövning. Kryptoanalys för att hitta svagheter. Varianter related key och related IV.</p>
 
-<h2 id="tip-4">Tip 4</h2>
+<h2 id="strömchiffers-begränsningar">Strömchiffers begränsningar</h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.</p>
-
-<p>Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.</p>
-
-<p>Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.</p>
-
-<p>Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.</p>
-
-<p>Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.</p>
+<p>Vi får aldrig använda samma nyckel och IV för att kryptera två meddelanden. Genom att flippa bitar kan vi lura mottagare. Kräver att vi använder någon form av Message Authentication Code.</p>
 
           </div>
 
@@ -431,7 +442,7 @@ Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tell
         </div>
 
         <div class="body-footer">
-          Last updated on May 5, 2019
+          Last updated on Nov 12, 2019
         </div>
 
       </article>
@@ -459,6 +470,9 @@ Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tell
 
     
     
+    
+    <script src="/js/mathjax-config.js"></script>
+    
 
     
     
@@ -475,6 +489,8 @@ Tip 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tell
       
 
       
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
       
     
 
