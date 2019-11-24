@@ -28,7 +28,7 @@
     
   
   <meta name="description" content="One Time Pad (OTP) är ett kryptosystem som är över 100 år och bevisat säker. Problemet är dock att OTP är svårt att implementera. Anledningen till detta problem kommer att bli uppenbart när man sett dess villkor. OTP är viktigt eftersom strömchiffer kan ses som ett försök att skapa ett OTP-liknande system som är praktiskt, även om strömchiffer inte ger perfekt sekretess.
-Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kryptera telegraferad information 1.">
+Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kryptera telegraferad information1.">
 
   
   <link rel="alternate" hreflang="en-us" href="/stream/intro/otp/">
@@ -121,12 +121,12 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
   <meta property="og:url" content="/stream/intro/otp/">
   <meta property="og:title" content="One Time Pad OTP | FredrikJ">
   <meta property="og:description" content="One Time Pad (OTP) är ett kryptosystem som är över 100 år och bevisat säker. Problemet är dock att OTP är svårt att implementera. Anledningen till detta problem kommer att bli uppenbart när man sett dess villkor. OTP är viktigt eftersom strömchiffer kan ses som ett försök att skapa ett OTP-liknande system som är praktiskt, även om strömchiffer inte ger perfekt sekretess.
-Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kryptera telegraferad information 1."><meta property="og:image" content="/img/icon-192.png">
+Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kryptera telegraferad information1."><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-11-12T00:00:00&#43;01:00">
+  <meta property="article:published_time" content="2019-11-24T19:05:00&#43;01:00">
   
-  <meta property="article:modified_time" content="2019-11-12T00:00:00&#43;01:00">
+  <meta property="article:modified_time" content="2019-11-24T19:05:00&#43;01:00">
   
 
   
@@ -385,7 +385,8 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
 
 <h2 id="historik">Historik</h2>
 
-<p>År 1919 tog G. S. Vernam patent på ett system för att automatiskt kryptera telegraferad information <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>. Principen byggde på att de meddelanden som skickades via en telegraf i början av 1900-talet var kodade i en remsa med utstandade hål. Varje tecken som skickades motsvarades av en rad på remsan. I varje rad fanns det fem positioner där det antingen fanns ett hål utstansat eller inget hål. Denna typ av kodning kallas även Baudot-kodning och kan ses som en 5-bitars digital kod.</p>
+<p>År 1919 tog G. S. Vernam patent på ett system för att automatiskt kryptera telegraferad
+information<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>. Principen byggde på att de meddelanden som skickades via en telegraf i början av 1900-talet var kodade i en remsa med utstandade hål. Varje tecken som skickades motsvarades av en rad på remsan. I varje rad fanns det fem positioner där det antingen fanns ett hål utstansat eller inget hål. Denna typ av kodning kallas även Baudot-kodning och kan ses som en 5-bitars digital kod.</p>
 
 <p>Det Vernam gjorde i sin maskin var att kombinera hålremsan för meddelandet med en annan hålremsa som innehöll krypteringsnyckeln. Krypteringsnyckeln skulle innehålla slumpvis genererade tecken, kodade med samma Baudot-kodning som meddelandet. Tanken är att nyckelremsan finns i två identiska exemplar där sändaren har den ana och mottagaren den andra.</p>
 
@@ -395,14 +396,17 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
 
 <h2 id="säkerhet">Säkerhet</h2>
 
-<p>I en senare publikation av Vernam <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> jämförs olika typer krypteringsmaskiner. I artikeln påpekas det att man inte får kryptera två meddelanden med samma nyckel, därav namnet One Time Pad. Det ska dock noteras att Vernam hade ett förslag på hur nyckelremsan kunde återvinnas genom att bilda en loop, vilket kan ses som ett tidigt strömchiffet.</p>
+<p>I en senare publikation av Vernam<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> jämförs olika typer krypteringsmaskiner. I artikeln påpekas det att man inte får kryptera två meddelanden med samma nyckel, därav namnet One Time Pad. Det ska dock noteras att Vernam hade ett förslag på hur nyckelremsan kunde återvinnas genom att bilda en loop, vilket kan ses som ett tidigt strömchiffet.</p>
 
-<p>Claude Shannon definierade i sin berömda artikel <sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup> begreppet perfekt sekretess. Perfekt sekretess innebär att ett system inte kan knäckas även om angriparen har obegränsade beräkningskraft. Från ett informationsteoretiskt perspektiv gäller att perfekt sekretess innebär att ingen information om meddelandets innehåll fås genom att observera kryptotexten. (Man kan dock argumentera att man kan se att ett meddelande skickats och även dess längd.)</p>
+<p>Claude Shannon definierade i sin berömda artikel<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup> begreppet perfekt sekretess. Perfekt sekretess innebär att ett system inte kan knäckas även om angriparen har obegränsade beräkningskraft. Från ett informationsteoretiskt perspektiv gäller att perfekt sekretess innebär att ingen information om meddelandets innehåll fås genom att observera kryptotexten. (Man kan dock argumentera att man kan se att ett meddelande skickats och även dess längd.)</p>
 
-<p>Shannon visade att för OTP har vi perfekt sekretess om följande villkor är uppfyllda:
-* Nyckeln är helt slumpvis genererad.
-* Nyckelns längd är lika lång som medelandet.
-* Nyckeln får bara användas för att kryptera ett meddelande.</p>
+<p>Shannon visade att för OTP har vi perfekt sekretess om följande villkor är uppfyllda:</p>
+
+<ul>
+<li>Nyckeln är helt slumpvis genererad.</li>
+<li>Nyckelns längd är lika lång som medelandet.</li>
+<li>Nyckeln får bara användas för att kryptera ett meddelande. (Därav namnet One-Time Pad.)</li>
+</ul>
 
 <h2 id="praktiska-aspekter">Praktiska aspekter</h2>
 
@@ -452,7 +456,7 @@ Historik År 1919 tog G. S. Vernam patent på ett system för att automatiskt kr
         </div>
 
         <div class="body-footer">
-          Last updated on Nov 12, 2019
+          Last updated on Nov 24, 2019
         </div>
 
       </article>

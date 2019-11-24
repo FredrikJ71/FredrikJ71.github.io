@@ -357,7 +357,9 @@
 <li><a href="#strömchiffer">Strömchiffer</a></li>
 <li><a href="#definition">Definition</a></li>
 <li><a href="#kerckhoffs-princip-och-krypteringsnycklar">Kerckhoffs Princip och krypteringsnycklar</a></li>
+<li><a href="#modell-för-nyckelgeneratorn">Modell för nyckelgeneratorn</a></li>
 <li><a href="#design-av-nyckelgeneratorn">Design av nyckelgeneratorn</a></li>
+<li><a href="#själv-synkroniserande-strömchiffer">Själv-synkroniserande strömchiffer</a></li>
 <li><a href="#källförteckning">Källförteckning</a></li>
 </ul></li>
 </ul>
@@ -415,6 +417,16 @@ från avlyssning kan ett strömchiffer eller annan typ av kryptering användas.<
 
 <p>Eftersom det blir svårare att gissa en nyckel om den innehåller många bitar kan man tycka att det skulle varit bättre med ännu längre nycklar. Men det är inte riktigt så enkelt. För det första innebär långa nycklar också att det tar längre tid att kryptera och avkryptera även för de som har nyckeln. För det andra måste dessa nycklar lagras på ett säkert sätt och det blir inte enklare om nycklarna blir för stora. Dessutom måste krypteringsalgoritmen vara tillräckligt bra så att det inte finns några kryptoanalytiska attacker som är effektivare än uttömmande prövning.</p>
 
+<h2 id="modell-för-nyckelgeneratorn">Modell för nyckelgeneratorn</h2>
+
+<p>För att beskriva och förstå hur en nyckelgenerator arbetar kan vi använda följande modell. Beskrivningen av modellen följer i stort sett framställningen i Handbook of applied cryptography<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>. Den viktiga skillanden är att här används även den publika parametern IV.</p>
+
+<p>Generatorn är en tillståndsmaskin vars tillstånd $s$ består av $m$ bitar. En initieringsfunktion $i$ används för att skapa starttillståndet $s_0, s_0 = i(K,IV).$</p>
+
+<p>När generatorn uppdateras eller klockas beräknas ett nytt tillstånd och en del av nyckelströmmen genereras med två funktioner $f$ och $g$ enligt $s_{i+1} = f(s_i,K,IV)$ och $z_i = g(s_i,K,IV).$</p>
+
+<p>Enligt Kerckhoffs princip kan vi förutsätta att de tre funktionerna $i$, $f$ och $g$ alla är publika.</p>
+
 <h2 id="design-av-nyckelgeneratorn">Design av nyckelgeneratorn</h2>
 
 <p>Genom åren har ett flertal algortimer för strömchiffer föreslagits. Om man tittar på moderna strömchiffer kan de grovt delas in i 4 kategorier.</p>
@@ -424,10 +436,19 @@ från avlyssning kan ett strömchiffer eller annan typ av kryptering användas.<
 
 <li><p>Optimerade för mjukvara. I denna kategori hitta vi ett antal strömchiffer är väldigt effektiva och snabba när de implementeras i mjukvara. Målet för dem är att kryptera data i realtid när de skicks över dagens snabba nätverk.</p></li>
 
-<li><p>Blockchiffer i olika strömchiffer-&ldquo;modes&rdquo;. Exempel här är AES-GCM <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> som används bland annat i våra trådlösa nätverk. Syftet med dessa är att kombinera ett välstuderat blockchoffer med de fördelar ett strömchiffer har.</p></li>
+<li><p>Blockchiffer i olika strömchiffer-&ldquo;modes&rdquo;. Exempel här är AES-GCM<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup> som används bland annat i våra trådlösa nätverk. Syftet med dessa är att kombinera ett välstuderat blockchoffer med de fördelar ett strömchiffer har.</p></li>
 
 <li><p>Generatorer som vilar på olika säkerhetsbevis. Tanken med denna typ av generatorer är att man kan bevisa att de är lika säkra som att lösa vissa svåra problem inom datavetenskapen. Även om dessa system visserligen vilar på någon form av säkerhetsbevis är de oftast inte effektiva, vilket gör att de har en begränsad användning.</p></li>
 </ol>
+
+<h2 id="själv-synkroniserande-strömchiffer">Själv-synkroniserande strömchiffer</h2>
+
+<p>Även om de symmetriska strömchifferna är den vanligaste typen är de inte den enda. Det finns ytterligare en typ av strömchiffer som används och de är de
+själv-synkronisrerande<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>. De skiljer sig från de symmetriska genom att deras tillstånd består av de $t$ föregående bitarna i kryptotexten
+ $s_i = s _ {i-1}, s _ {i-2}, \ldots, s _ {i-t} $.</p>
+
+<p>Tillståndet $s$ används tillsammans med $K$ och $IV$ för att beräkna nästa symbol i nyckelströmmen,
+$z_i = g(s_i,K,IV).$</p>
 
 <h2 id="källförteckning">Källförteckning</h2>
 <div class="footnotes">
@@ -437,8 +458,10 @@ från avlyssning kan ett strömchiffer eller annan typ av kryptering användas.<
 <ol>
 <li id="fn:1">Kerckhoffs, Auguste. La cryptographie militaire, Journal des sciences militaires 1883.
  <a class="footnote-return" href="#fnref:1"><sup>^</sup></a></li>
-<li id="fn:2">Dworkin, Morris. Recommendation for block cipher modes of operation: Galois/counter mode (GCM) and GMAC, NIST 800-38D.
+<li id="fn:2">Menezes, A., van Oortschot, P., Vanstone, S. Handbook of applied cryptography, CRC Press, 1997.
  <a class="footnote-return" href="#fnref:2"><sup>^</sup></a></li>
+<li id="fn:3">Dworkin, Morris. Recommendation for block cipher modes of operation: Galois/counter mode (GCM) and GMAC, NIST 800-38D.
+ <a class="footnote-return" href="#fnref:3"><sup>^</sup></a></li>
 </ol>
 </div>
 
@@ -461,7 +484,7 @@ från avlyssning kan ett strömchiffer eller annan typ av kryptering användas.<
         </div>
 
         <div class="body-footer">
-          Last updated on Nov 17, 2019
+          Last updated on Nov 24, 2019
         </div>
 
       </article>
