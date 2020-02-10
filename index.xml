@@ -85,7 +85,7 @@ information&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a hr
 
 &lt;p&gt;När man diskuterar säkerhet för olika kryptosystem är det viktigt att definiera förutsättningar för angriparen. Från den klassiska modellen för överföring av krypterade meddelanden är det självklart att angriparen har tillgång till kryptotexten. En modell för attack där angriparen enbart har tillgång till kryptotexten kallas för ciphertext only.&lt;/p&gt;
 
-&lt;p&gt;En lärdom från historien är att abgripare oftast har lite mer information än enbart kryptotexten. Med hjälp av lite kunskap om i vilket sammanhang kryoteringen sker så kan ofta angriparen även känna till delar av meddelandet. I vissa fall kan man även göra antagandet att angriparen känner till hela meddelandet som skickats. Målet för angriparen blir att utnyttja det kända meddelandet eller delar av meddelandet samt tillhörande kryptotext och hitta den hemliga meddelandet eller kunna dekryptera övriga meddelanden som krypterats med samma meddelande. Denna typ av angrip kallas för known plaintext.&lt;/p&gt;
+&lt;p&gt;En lärdom från historien är att angripare oftast har lite mer information än enbart kryptotexten. Med hjälp av lite kunskap om i vilket sammanhang kryoteringen sker så kan ofta angriparen även känna till delar av meddelandet. I vissa fall kan man även göra antagandet att angriparen känner till hela meddelandet som skickats. Målet för angriparen blir att utnyttja det kända meddelandet eller delar av meddelandet samt tillhörande kryptotext och hitta den hemliga meddelandet eller kunna dekryptera övriga meddelanden som krypterats med samma meddelande. Denna typ av angrip kallas för known plaintext.&lt;/p&gt;
 
 &lt;p&gt;Angrepp av typen known plaintext innebär att angriparen känner ett meddelande $M = M_1,\ldots, M_N$ och tillhörande kryptotext $C= C_1,\ldots, C_N$. Angriparen använder $M$ och $C$ för att beräkna nyckelströmmen $Z = Z_1,\ldots,Z_N$, där $Z_i = M_i$ XOR $C_i, 1 \leq i \leq N$. Alltså kan vi ofta förutsätta att en angripare har observerat delar av nyckelströmmen från generatorn. Målet är att använda den observerade nyckelströmmen och kunna hitta resten av nyckelströmmen eller den hemliga nyckeln.&lt;/p&gt;
 
@@ -94,12 +94,16 @@ information&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a hr
 &lt;ul&gt;
 &lt;li&gt;Skilja en given kryototext eller nyckelström från en helt slumpmässig sekvens av bitar.&lt;/li&gt;
 &lt;li&gt;Angriparen kan observera nyckelströmmen från ett antal nycklar som visserligen är okända men med ett känt samband. (Related-key) Exempelvis kan nycklarna skilja sig åt enbart i ett fåtal bitar.&lt;/li&gt;
-&lt;li&gt;Angriparen ett flertal nyckelströmmar som har krypterats med samma nyckel men med olika IV. (related-IV)&lt;/li&gt;
+&lt;li&gt;Angriparen har tillgång till ett flertal nyckelströmmar som har krypterats med samma nyckel men med olika IV. (related-IV)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;lång-period&#34;&gt;Lång period&lt;/h2&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
+&lt;p&gt;Alla sekvenser som skapats av en nyckelgenerator eller annan form av pseudo-random number genrator är periodiska, vilket innebär att de kommer att repeteras efter ett tag. Som ett exempel för att illustrera perioden kan vi ta sekvensen $S = 0,1,1,0,1,1,0,1,1, \ldots.$ Det är enkelt att se att sekvensen består av delsekvensen $0,1,1$ som därefter repeteras. Perioden för sekvensen $S$ är då 3.&lt;/p&gt;
+
+&lt;p&gt;Låt $T$ vara perioden för en nyckelström $Z$. Sekvensen $Z$ kan då skrivas som $Z=Z_1, Z_2, \ldots, Z_T, Z_1, Z_2, \ldots, Z_T, Z_1, \ldots.$ Om angriparen känner till eller lyckas gissa perioden $T$ delas den observerade kryptotexten in i block av $T$ symboler. $C^1 = C_1, C_2, C_T$, $ C^2 = C _ {T+1}, C _ {T+2} , C _ {2T}$ och så vidare tills de observereade bitarna är slut. Eftersom nyckelströmmen har period $T$ kan vi hantera $C^1$ och $C^2$ som två separata meddelanden som är krypterade med samma nyckel och IV. Att återanvända samma nyckel och IV är en stor säkerhetsrisk.&lt;/p&gt;
+
+&lt;p&gt;En viktig princip är därför att byta IV eller nyckel innan vi krypterat $T$ symboler. Samtidigt vill vi inte byta IV eller nyckel för ofta eftersom det tar tid. Lösningen blir att se till så att den genererade nyckelströmmen har lång period, vilket inte alltid är lätt att bevisa.&lt;/p&gt;
 
 &lt;h2 id=&#34;ser-slumpmässiga-ut&#34;&gt;Ser &amp;ldquo;slumpmässiga&amp;rdquo; ut&lt;/h2&gt;
 
