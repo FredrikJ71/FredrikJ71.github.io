@@ -360,6 +360,7 @@ Förutsättningar för angriparen När man diskuterar säkerhet för olika krypt
 <li><a href="#ser-slumpmässiga-ut">Ser &ldquo;slumpmässiga&rdquo; ut</a></li>
 <li><a href="#hitta-nyckel-eller-tillstånd">Hitta nyckel eller tillstånd</a></li>
 <li><a href="#strömchiffers-begränsningar">Strömchiffers begränsningar</a></li>
+<li><a href="#källförteckning">Källförteckning</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -410,15 +411,66 @@ Förutsättningar för angriparen När man diskuterar säkerhet för olika krypt
 
 <h2 id="ser-slumpmässiga-ut">Ser &ldquo;slumpmässiga&rdquo; ut</h2>
 
-<p>Test för att avgöra om de är tillräckligt slumpvisa i sitt bettende. predictor distingisher.</p>
+<p>En viktig princip för strömchiffer är att den genererade nyckelströmmen ser tillräcklig slumpmässig ut. Om en angripare kan hitta statistiska avvikelser i en nyckelström kan detta utnyttjas i ett angrepp mot kryptosystemet. Exempelvis kan angriparen gissa nästa bit i nyckelsströmmen med en sannolikhet bättre än en halv. Angrepp av denna typ har använts i angrepp mot säkerheten i trådlösa nätverk.</p>
+
+<p>För att avgöra om en sekvens är tillräcklig slumpvis har det utvecklats flera olika statistiska test. Solomon Golomb<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> definierade följande tre villkor:</p>
+
+<ol>
+<li>Sekvensen är balancerad, dvs. sannolikheten för en nolla i sekvensen är (ungefär) lika med sannolikheten för en etta.</li>
+<li>Sannolikhete föra att generera en följd av $k$ stycken ettor eller nollor är $1 / 2^k $.</li>
+<li>Auto-korrelationsfunktionen antar enbart två värden.</li>
+</ol>
+
+<p>De tre testen som Golomb formulerade är inte tillräckliga för modera strömchiffer utan flera olika tester har utvecklats. Exempel på dessa tester är testsviten från NIST<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>.</p>
+
+<p>Kopplat till de statistiska testen finns två typer av algoritmer som använd för att avgöra en sekvens slumpmässighet. Den ena typen kallas för en Distinguisher och den andra typen kallas för Next-bit predictor.</p>
+
+<p>En Distinguisher $D_G$ är en algortitm som tar två sekvenser $S$ och $X$ som input, där den ena sekvensen $S$ är genererad av en generator $G$ och den andra $X$ är en slumpmässigt genererad sekvens. Om $D_G$ kan avgöra vilken av sekvenserna som är genererad av $G$ med sannolikheten $1 / 2 + t$ är $D_G$ en $t$-distinguisher för $G$.</p>
+
+<p>En next-bit predictor $P_G$ tar en $n$-bitars sekvens $S = s _ 1, \ldots, s _ n $, som är genererade av $G$, och matar ut en skattning av nästa bit $x$. Om $ P(s _ {n+1} = x) = 1 / 2 + t$ är $P_G$ en $t$-next bit predictor för $G$.</p>
+
+<p>Det går att bevisa att man från en Distinguisher kan konstruera en Next bit predictor och vice versa.</p>
 
 <h2 id="hitta-nyckel-eller-tillstånd">Hitta nyckel eller tillstånd</h2>
 
-<p>Uttömande prövning. Kryptoanalys för att hitta svagheter. Varianter related key och related IV.</p>
+<p>Förutom att använda et antal statistiska tester kan angriparen även försöka sig på att hitta nyckeln. Som tidigare nämnts har angrriparen all information om hur genratorn förutom värdet på de bitar som utgör nyckeln.</p>
+
+<p>Angriparen kan alltid gissa värdet på nyckeln och därefter testa om gissningen är korrekt. Komplexiteten för att lyckas med denna typ av attack beror på antal bitar i nyckeln. För en nyckel med $k$ bitar behöver angriparen testa ungefär $2^k$ nycklar innan rätt nyckel hittats. Detta innebär att så länge nyckeln består av tillräckligt många bitar blir det svårt för angriparen.</p>
+
+<p>Alternativt kan angriparen försöka gissa det inre tillståndet för generatorn och använda detta för att generera resten av sekvensen.</p>
+
+<p>Tyvärr räcker det inte med bara många bitar utan generatorn måste även stå emot kryptoanalytiska angrepp. Ett kryptoanalytiskt angrepp innebär att angriparen lyckas hitta en svaghet hos generatorn som gör att nyckeln eller tillståndet kan återskapas snabbare än uttömmande prövning.</p>
+
+<p>I samband med kryptoanalytiska attacker skiljer man på vilken information man anser angriparen har. Den första typen av angrepp och där angriparen har minst information är cipertext only attacks. I denna typ av angrepp har angriparen observerat enbart en del av kryptotexten och ska återskapa nyckeln eller generera restan av sekvensen.</p>
+
+<p>Oftast har angriparen betydligt mer information än så. Det är inte ovanligt att angriparen känner till delar av klartexten och tillhörande kryptotexten. Denna typ av angrepop kallas known plaintext. Utifrån de par av klartext och kryptotext som angriparen har tilllgång till är målet att hitta nyckeln eller dekryptera de okända bitarna av kryptotext.</p>
+
+<p>Det finns även andra varianter av angrepp att ta hänsyn till. Exempelvis kan angriparen ha kännedom om flera klartext/kryptotext-par som har genererats av samma nyckel men med olika IV. Vi kan också låta angriparen själv välja hela eller delar av IV (Chosen IV) eller också observera kryptotext som är krypterade med olika nycklar men med ett känt samband mellan nycklarna (related key).</p>
 
 <h2 id="strömchiffers-begränsningar">Strömchiffers begränsningar</h2>
 
-<p>Vi får aldrig använda samma nyckel och IV för att kryptera två meddelanden. Genom att flippa bitar kan vi lura mottagare. Kräver att vi använder någon form av Message Authentication Code.</p>
+<p>Även om strömchiffer fungerar bra för att hindra en eventuell avlyssnare från att hitta klartexten finns det en del andra saker att tänka på.</p>
+
+<p>En viktig sak är att ett par med en nyckel och IV anldrig för återupprepas. Om de återupprepas kommer exakt samma nyckelström att skapas som tidiagre och vi får samma problem som för one time pad där nyckelbitarna återanvänds. Av denna anledning måste vi byta nyckel inna IV riskerar att upprepas. Vi msåte även ta hänsyn till birthday paradoxen vilket väsentligen minskar antal IV innan byte av nyckel.</p>
+
+<p>I diskussionen av säkerheten för strömchiffer har vi fölrutsatt en passiv angripare. Dvs. en angripare som bara lyssnar på kanalen. Men i många sammanhang kan vi förutsätta en aktiv angripare som har möjlighet att ändra på data som skickas på kanalen.</p>
+
+<p>För att ge ett exempel på detta tänk på en situation där vi ska rösta över nätverket och skickar en enda bit som anger val-alternativ. Vi har fått en fråga vilket cola-märke som är vår favorit och vi anger 1 för Coca-cola och 0 för Pepsi. Ge den skickade biten betäckningen $b$. Vi krypterar denna med en bit $z$ från nyckelströmmen och skickar $c = z xor b.$ Angriparen vet inte vad vi röstar på men ändrar värdet på $c$ till $c2 = c xor 1$. Mottagen som ska räkna vår röst dekrypterar det mottagna meddelandet som $b2 = c2 xor z = b xor 1 xor z xor z = b xor 1$. Alltså kommer mottagaren registrera det motsatta värdet jämfört med vad vi röstade på. Om vi röstade på Coca-cola skulle vår röst vara Pepsi.</p>
+
+<p>För situationer som den avanstående där vi kan vara oroliga för en aktiv angripare som ändrar våra meddelanden är inte strömchigger tillräckliga utan vi behöver kombinera dessa med någonm form av message authentication codes. Moderna tillämpningar ser därför alltif till att kombinera symmetrisk kryptering med skydd för modifiering i det som kallas för authenticated encryption.</p>
+
+<h2 id="källförteckning">Källförteckning</h2>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Golomb S. W., Shift register Sequences 3rd Rev. Ed., World Scientific Publishing, 2017.
+ <a class="footnote-return" href="#fnref:1"><sup>^</sup></a></li>
+<li id="fn:2">NIST, A statistical test suite for the validation of random number generators and pseudo random number generators for cryptographic applications, <a href="https://csrc.nist.gov/Projects/Random-Bit-Generation/Documentation-and-Software" target="_blank">https://csrc.nist.gov/Projects/Random-Bit-Generation/Documentation-and-Software</a>.
+ <a class="footnote-return" href="#fnref:2"><sup>^</sup></a></li>
+</ol>
+</div>
 
           </div>
 
