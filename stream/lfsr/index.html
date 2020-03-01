@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Fredrik Jönsson">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Linjärt återkopplade skiftregister är en vanlig byggsten i många strömchiffer.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/stream/lfsr/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#4caf50">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.3b3edbcfac4db007699bb64eefe7853a.css">
+
+  
+
+  
+  
+  
+
+  
+  <link rel="alternate" href="/stream/lfsr/index.xml" type="application/rss+xml" title="FredrikJ">
+  <link rel="feed" href="/stream/lfsr/index.xml" type="application/rss+xml" title="FredrikJ">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/stream/lfsr/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="FredrikJ">
+  <meta property="og:url" content="/stream/lfsr/">
+  <meta property="og:title" content="Linjärt återkopplade skiftregister (LFSR) | FredrikJ">
+  <meta property="og:description" content="Linjärt återkopplade skiftregister är en vanlig byggsten i många strömchiffer."><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="og:updated_time" content="2019-07-11T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Linjärt återkopplade skiftregister (LFSR) | FredrikJ</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">FredrikJ</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/stream">
+            
+            <span>Strömchiffer</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/notes">
+            
+            <span>Anteckningar</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" id="search-query" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  <div class="docs-toc-item active">
+    <a class="docs-toc-link" href="/stream/lfsr/">LFSR</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/stream/lfsr/polynom/">Polynom</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/stream/lfsr/galois/">Galois</a>
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+      <p class="docs-toc-title">On this page</p>
+      
+
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#exempel">Exempel</a></li>
+<li><a href="#karakteristiskt-polynom">Karakteristiskt polynom</a></li>
+<li><a href="#källförteckning">Källförteckning</a></li>
+</ul></li>
+</ul>
+</nav>
+
+      <ul class="nav toc-top">
+        <li><a href="#">Back to top</a></li>
+      </ul>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+        <div class="docs-article-container">
+          <h1 itemprop="name">Linjärt återkopplade skiftregister (LFSR)</h1>
+
+          <div class="article-style" itemprop="articleBody">
+            
+
+<p>En vanlig och viktig komponent i många strömchiffer är det linjärt återkopplade skiftregistret, ofta kallat LFSR efter dess engelska namn linear feedback shift register. Ett LFSR består av $m$ minnesceller, där varje minnescell kan lagra ett värde. Inom kryptografin används ofta binära skiftregister där varje cell kan lagra en bit, dvs. 0 eller 1. Förutom binära LFSR används också skiftregister där varje cell lagrar ett element från $GF(2^n).$ Det går att generalisera LFSR till godtyckliga kroppar.</p>
+
+<p>De $m$ cellerna bildar tillsammans skiftregistrets tillstånd $s = s _ {m-1}, s _ {m-2}, \ldots, s_0$, där $s_k$ är minnescell $k$. Innehållet i tillståndet anmvänds för att beräkna en ny symbol. Den sekvens som skapas uppfyller den linjära rekursionsformeln $ a_t = a _ {t-1}c _ 1 + a _ {t-2}c_2 + \ldots + a _ {t-m}c_m$, för $t \ge m$. Observera att för binära LFSR gäller att addition gör modulo 2 dvs. XOR-operatorn. Se nedanstående bild för ett LFSR med minne 4 som generar sekvensen $a_t = a _ {t-1} + a_ {t-4}$. Innan vi genererar sekvensen laddar vi skiftregistret med ett starttillstånd $s_0 = a _ {m-1}, a _ {m-2}, \ldots, a_0$.<br />
+<img src="/img/lfsr/LFSR.png" alt="Exempel på ett LFSR" />
+Då de linjärt återkopplade skiftregisterna såsom de definierats ovan liknar definitionen av Fibonaccital kallas denna typ av LFSR också för skiftregister på Fibonacci-form.</p>
+
+<h2 id="exempel">Exempel</h2>
+
+<p>Utgå från skiftregistret i bilden ovan och låt dess starttillstånd vara $s_0 = 0, 0, 0, 1$. Nästa symbol räkas då ut som $a_4 = a_3 + a_0 = 0 + 1 = 1$. Det nya tillståndet efter skiftning blir då $s_1 = 1, 0, 0, 0$. Nästa symbol i sekvenes räknas ut med rekursionsformeln och vi får på nytt en 1:a och det nya tillståndet blir $s_2 = 1, 1, 0, 0.$ Vi kan upprepa denna procedur tills vi genererat tillräckligt många bitar som vi behöver i vår tillämpning. Det visar sig dock att efter ett tag kommer vi att komma tillbaka till starttillsåndet varefter sekvensen upprepar sig. I det exempel vi har här kommer den genererade sekvensen att bli $a = [100011110101100]^\infty.$ Dvs. en sekvens som innehåller 15 bitar innan den återupprepar sig. Det visar sig att för binära LFSR med längd 4 är en sekvens med period 15 så lång sekvens det går att skapa. För binära skiftregister med $m$-bitars minne är den maximala perioden $2^m - 1.$ Dock måste vi välja vilka celler vi återkopplar med omsorg. Ett verktyg som kan användas för studera LFSR-sekveser är karakteristiska polynom.</p>
+
+<h2 id="karakteristiskt-polynom">Karakteristiskt polynom</h2>
+
+<p>Om vi har en LFSR-sekvens som uppfyller rekursionen $ a_t = a _ {t-1}c _ 1 + a _ {t-2}c_2 + \ldots + a _ {t-m}c_m$, för $t \ge m$, så kan vi definiera ett polynom $c(x) = 1 - c_1x^1 - c_2x^2 - \ldots - c_mx^m.$ För binära LFSR är addition och suntraktion samma och vi kan ersätta minutecknet med plustecken. Dock gäller detta inte för det generella fallet. Polynomet $c(x)$ kallas för det karakteristiska polynomet<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>. Tyvärr skiljer sig definitionen av polynom i samband med LFSR sig åt mellan olika källor. Jag har valt att utgå från Golombs definition.</p>
+
+<p>En intressant egenskap för det karakteristiska polynomet är att dess matematiska egenskaper bestämmer egenskaper hos den genererade sekvensen, exempelvis dess period.</p>
+
+<h2 id="källförteckning">Källförteckning</h2>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Golomb S. W., Shift register Sequences 3rd Rev. Ed., World Scientific Publishing, 2017.
+ <a class="footnote-return" href="#fnref:1"><sup>^</sup></a></li>
+</ol>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          Last updated on Nov 24, 2019
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.3258b3a711acd6208568ec000de4beec.js"></script>
+
+  </body>
+</html>
+
+
