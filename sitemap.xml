@@ -13,6 +13,21 @@
   </url>
   
   <url>
+    <loc>/stream/lfsr/</loc>
+    <lastmod>2019-11-24T19:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/stream/lfsr/polynom/</loc>
+    <lastmod>2019-11-24T19:05:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/stream/lfsr/galois/</loc>
+    <lastmod>2019-11-12T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/stream/intro/security/</loc>
     <lastmod>2019-11-12T00:00:00+01:00</lastmod>
   </url>
