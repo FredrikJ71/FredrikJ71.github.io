@@ -1,8 +1,8 @@
 ---
 layout: about
-title: about
+title: Fredriks Arkiv
 permalink: /
-subtitle: 
+subtitle:
 
 profile:
   align: right
