@@ -7,8 +7,8 @@ nav_order: 2
 collection: books
 ---
 
-> What an astonishing thing a book is. It's a flat object made from a tree with flexible parts on which are imprinted lots of funny dark squiggles. But one glance at it and you're inside the mind of another person, maybe somebody dead for thousands of years. Across the millennia, an author is speaking clearly and silently inside your head, directly to you. Writing is perhaps the greatest of human inventions, binding together people who never knew each other, citizens of distant epochs. Books break the shackles of time. A book is proof that humans are capable of working magic.
->
-> -- Carl Sagan, Cosmos, Part 11: The Persistence of Memory (1980)
+Att läsa böcker är en sysselsättning som har gett mig stor glädje sedan jag knäckte läskoden i mitten av 70-talet. Även om jag inte slukar böcker i samma takt som under barndomen, är de fortfarande en viktig del av mitt liv. Vissa böcker, främst facklitteratur, finns det anledning till att återkomma till vid senare tillfällen. För att avlasta minnet har det varit nyttigt att skriva ner korta anteckningar om innehållet.
 
-## Books that I am reading, have read, or will read
+Dessa bokanteckningar skiljer jag från mina mer ämnesmässiga blogginlägg. I stället samlas de här under rubriken boktips, som ett personligt minnesarkiv. Kanske kan även du som läsare ha glädje av dessa boktips. Jag ber om överseende med att de i första hand är skrivna som stöd för minnet och inte med tanke på publicering. 
+
+## Böcker jag läst
