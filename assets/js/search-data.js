@@ -406,13 +406,6 @@ ninja.data = [{
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
             },},{
-        id: 'social-email',
-        title: 'email',
-        section: 'Socials',
-        handler: () => {
-          window.open("mailto:%66%72%65%64%72%69%6B%6A.%68%65%6D@%67%6D%61%69%6C.%63%6F%6D", "_blank");
-        },
-      },{
         id: 'social-github',
         title: 'GitHub',
         section: 'Socials',
