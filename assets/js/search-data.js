@@ -37,7 +37,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-risker-med-internet-of-things",
+        },{id: "post-zigbee-security",
+        
+          title: "ZigBee Security",
+        
+        description: "defaultnycklar i ZigBee",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2016/zigbee-security/";
+          
+        },
+      },{id: "post-proxy-arp",
+        
+          title: "Proxy ARP",
+        
+        description: "löser route utan adress",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2016/proxy-ARP/";
+          
+        },
+      },{id: "post-risker-med-internet-of-things",
         
           title: "Risker med Internet of Things",
         
