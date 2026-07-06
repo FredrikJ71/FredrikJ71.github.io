@@ -37,7 +37,51 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-zigbee-security",
+        },{id: "post-wpa2-professional-wpa-eap",
+        
+          title: "WPA2 - Professional (WPA-EAP)",
+        
+        description: "Wifi-säkerhet med",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/wpa2-professional-WPA-EAP/";
+          
+        },
+      },{id: "post-dnssec-windows-dns",
+        
+          title: "DNSSEC - Windows DNS",
+        
+        description: "Tillförlitliga DNS-svar med hjälp av DNSSEC",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/Dnssec-Windows-DNS/";
+          
+        },
+      },{id: "post-grunder-i-cisco-cli",
+        
+          title: "Grunder i Cisco CLI",
+        
+        description: "introduktion till konfiguration av Cisco",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/grunder-i-Cisco-CLI/";
+          
+        },
+      },{id: "post-cisco-catalyst-switch-analys",
+        
+          title: "Cisco Catalyst Switch - Analys",
+        
+        description: "Analysera nätverkskonfigurationer på en Cisco switch",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/Cisco-catalyst-switch-analys/";
+          
+        },
+      },{id: "post-zigbee-security",
         
           title: "ZigBee Security",
         
