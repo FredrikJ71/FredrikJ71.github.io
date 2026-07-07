@@ -37,7 +37,62 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-wpa2-professional-wpa-eap",
+        },{id: "post-router-on-a-stick-cisco",
+        
+          title: "Router on a stick - Cisco",
+        
+        description: "Routa mellan VLAN via ett interface",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/router-on-a-stick-cisco/";
+          
+        },
+      },{id: "post-cisco-routing-ripv2",
+        
+          title: "Cisco Routing - RIPv2",
+        
+        description: "Hur man kan bygga upp ett enkelt nät med flera routrar",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/cisco-routing-ripv2/";
+          
+        },
+      },{id: "post-cisco-router-introduktion",
+        
+          title: "Cisco router - introduktion",
+        
+        description: "Grunderna för att använda Cisco router",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/cisco-router-introduktion/";
+          
+        },
+      },{id: "post-cisco-catalyst-konfigurera-vlan",
+        
+          title: "Cisco Catalyst - Konfigurera VLAN",
+        
+        description: "Dela in ditt nät i mindre delar med VLAN",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/Cisco-Catalyst_konfigurera-VLAN/";
+          
+        },
+      },{id: "post-cisco-interface-på-en-switch",
+        
+          title: "Cisco - Interface på en switch",
+        
+        description: "Konfigurationera interface på en Cisco switch",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/Cisco-Interface-pa-en-switch/";
+          
+        },
+      },{id: "post-wpa2-professional-wpa-eap",
         
           title: "WPA2 - Professional (WPA-EAP)",
         
@@ -57,6 +112,17 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2017/Dnssec-Windows-DNS/";
+          
+        },
+      },{id: "post-cisco-catalyst-management-och-säkerhet",
+        
+          title: "Cisco Catalyst - Management och Säkerhet",
+        
+        description: "Lösenordsskydd och grundläggande säkerhet",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2017/cisco-catalyst-management-och-sakerhet/";
           
         },
       },{id: "post-grunder-i-cisco-cli",
